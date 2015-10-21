@@ -8,11 +8,15 @@
 
 #import "JWLrcScrollView.h"
 #import "Masonry.h"
+#import "JWLrcCell.h"
+#import "JWLrcTool.h"
+#import "JWLrcLine.h"
 
 @interface JWLrcScrollView()<UITableViewDataSource>
 
 @property (nonatomic, weak) UITableView *tableView;
 
+@property (nonatomic, strong) NSArray *lrcLines;
 @end
 
 @implementation JWLrcScrollView
@@ -61,31 +65,33 @@
 #pragma mark - <UITableViewDataSource>
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 20;
+    return self.lrcLines.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *const cellID = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    if (!cell) {
-        
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
-        // 设置cell的背景颜色
-        cell.backgroundColor = [UIColor clearColor];
-        // 去掉点击cell有背景颜色显示
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        // 设置textLabel的属性
-        cell.textLabel.textColor = [UIColor whiteColor];
-        cell.textLabel.font = [UIFont systemFontOfSize:14.0];
-        cell.textLabel.textAlignment = NSTextAlignmentCenter;
-    }
+    // 1. 创建cell
+    JWLrcCell *cell = [JWLrcCell lrcCellWithTableView:tableView];
     
-    cell.textLabel.text = @"测试数据";
+    // 获取模型数据
+    JWLrcLine *lrcLine = self.lrcLines[indexPath.row];
+    
+    cell.textLabel.text = lrcLine.text;
     
     return cell;
 }
 
+#pragma mark - 重写setLrcName方法
+- (void)setLrcName:(NSString *)lrcName {
+    
+    _lrcName = lrcName;
+    
+    // 解析歌词
+    self.lrcLines = [JWLrcTool lrcToolWithLrcName:lrcName];
+    
+    // 刷新列表
+    [self.tableView reloadData];
+}
 
 @end
 

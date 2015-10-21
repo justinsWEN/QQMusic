@@ -117,6 +117,9 @@
     
     // 4.设置iconView歌手图片旋转效果
     [self addIconViewAnimation];
+    
+    // 5. 给lrcScrollView的lrcName设置当前播放歌曲的歌名
+    self.lrcScrollView.lrcName = playMusic.lrcname;
 }
 
 #pragma mark - 核心动画

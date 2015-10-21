@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B93A7A2E1BD7FC7F006268F2 /* JWLrcCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B93A7A2D1BD7FC7F006268F2 /* JWLrcCell.m */; settings = {ASSET_TAGS = (); }; };
+		B93A7A311BD800C3006268F2 /* JWLrcLine.m in Sources */ = {isa = PBXBuildFile; fileRef = B93A7A301BD800C3006268F2 /* JWLrcLine.m */; settings = {ASSET_TAGS = (); }; };
+		B93A7A341BD80501006268F2 /* JWLrcTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B93A7A331BD80501006268F2 /* JWLrcTool.m */; settings = {ASSET_TAGS = (); }; };
 		B94E80441BD7C9AB004CE4AC /* CALayer+JWExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B94E80431BD7C9AB004CE4AC /* CALayer+JWExtension.m */; settings = {ASSET_TAGS = (); }; };
 		B94E80471BD7D20B004CE4AC /* JWLrcScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B94E80461BD7D20B004CE4AC /* JWLrcScrollView.m */; settings = {ASSET_TAGS = (); }; };
 		B9E3E5B41BD7268B0053A054 /* DRNRealTimeBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E3E5851BD7268B0053A054 /* DRNRealTimeBlurView.m */; settings = {ASSET_TAGS = (); }; };
@@ -101,6 +104,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B93A7A2C1BD7FC7F006268F2 /* JWLrcCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWLrcCell.h; sourceTree = "<group>"; };
+		B93A7A2D1BD7FC7F006268F2 /* JWLrcCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWLrcCell.m; sourceTree = "<group>"; };
+		B93A7A2F1BD800C3006268F2 /* JWLrcLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWLrcLine.h; sourceTree = "<group>"; };
+		B93A7A301BD800C3006268F2 /* JWLrcLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWLrcLine.m; sourceTree = "<group>"; };
+		B93A7A321BD80501006268F2 /* JWLrcTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWLrcTool.h; sourceTree = "<group>"; };
+		B93A7A331BD80501006268F2 /* JWLrcTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWLrcTool.m; sourceTree = "<group>"; };
 		B94E80421BD7C9AB004CE4AC /* CALayer+JWExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+JWExtension.h"; sourceTree = "<group>"; };
 		B94E80431BD7C9AB004CE4AC /* CALayer+JWExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+JWExtension.m"; sourceTree = "<group>"; };
 		B94E80451BD7D20B004CE4AC /* JWLrcScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWLrcScrollView.h; sourceTree = "<group>"; };
@@ -414,6 +423,8 @@
 			children = (
 				B9E3E5CB1BD73A590053A054 /* JWMusic.h */,
 				B9E3E5CC1BD73A590053A054 /* JWMusic.m */,
+				B93A7A2F1BD800C3006268F2 /* JWLrcLine.h */,
+				B93A7A301BD800C3006268F2 /* JWLrcLine.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -437,6 +448,8 @@
 				B9E3E5C91BD726B90053A054 /* JWAudioTool.m */,
 				B9E3E5CE1BD73A980053A054 /* JWMusicTool.h */,
 				B9E3E5CF1BD73A980053A054 /* JWMusicTool.m */,
+				B93A7A321BD80501006268F2 /* JWLrcTool.h */,
+				B93A7A331BD80501006268F2 /* JWLrcTool.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -446,6 +459,8 @@
 			children = (
 				B94E80451BD7D20B004CE4AC /* JWLrcScrollView.h */,
 				B94E80461BD7D20B004CE4AC /* JWLrcScrollView.m */,
+				B93A7A2C1BD7FC7F006268F2 /* JWLrcCell.h */,
+				B93A7A2D1BD7FC7F006268F2 /* JWLrcCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -697,7 +712,9 @@
 				B9E529011BD6A58D0005706D /* main.m in Sources */,
 				B9E3E5BB1BD7268B0053A054 /* MASViewConstraint.m in Sources */,
 				B9E5295A1BD6BDAE0005706D /* JWPlayingViewController.m in Sources */,
+				B93A7A2E1BD7FC7F006268F2 /* JWLrcCell.m in Sources */,
 				B9E3E5D01BD73A980053A054 /* JWMusicTool.m in Sources */,
+				B93A7A341BD80501006268F2 /* JWLrcTool.m in Sources */,
 				B9E3E5C41BD7268B0053A054 /* NSObject+MJCoding.m in Sources */,
 				B9E529001BD6A58D0005706D /* AppDelegate.m in Sources */,
 				B9E3E5B51BD7268B0053A054 /* UIImage+BoxBlur.m in Sources */,
@@ -706,6 +723,7 @@
 				B9E3E5CA1BD726B90053A054 /* JWAudioTool.m in Sources */,
 				B9E3E5C01BD7268B0053A054 /* MJExtensionConst.m in Sources */,
 				B9E3E5C51BD7268B0053A054 /* NSObject+MJKeyValue.m in Sources */,
+				B93A7A311BD800C3006268F2 /* JWLrcLine.m in Sources */,
 				B9E3E5BA1BD7268B0053A054 /* MASViewAttribute.m in Sources */,
 				B94E80441BD7C9AB004CE4AC /* CALayer+JWExtension.m in Sources */,
 				B9E3E5B81BD7268B0053A054 /* MASConstraintMaker.m in Sources */,

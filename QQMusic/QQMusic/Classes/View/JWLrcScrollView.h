@@ -10,4 +10,7 @@
 
 @interface JWLrcScrollView : UIScrollView
 
+/** 歌词文件名 */
+@property (nonatomic, copy) NSString *lrcName;
+
 @end
