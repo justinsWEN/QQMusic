@@ -13,6 +13,7 @@
 #import "JWAudioTool.h"
 #import "JWMusic.h"
 #import "NSString+JWExtension.h"
+#import "CALayer+JWExtension.h"
 
 #define JWColor(r,g,b) ([UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0])
 
@@ -120,7 +121,7 @@
     [self addIconViewAnimation];
 }
 
-#pragma mark - 图片旋转效果
+#pragma mark - 核心动画
 - (void)addIconViewAnimation {
     
     // 1.创建动画
@@ -207,6 +208,61 @@
     self.player.currentTime = currentTime;
     // 2.2 更新进度条
     [self updateProgress];
+}
+
+#pragma mark - 对歌曲事件的处理
+- (IBAction)previousMusic {
+    // 播放上一首歌曲
+    [self switchMusicWithNextMusic:NO];
+}
+
+- (IBAction)nextMusic {
+    // 播放下一首歌曲
+    [self switchMusicWithNextMusic:YES];
+}
+
+- (void)switchMusicWithNextMusic:(BOOL)isNextMusic {
+    
+    // 1. 获取当前播放的歌曲
+    JWMusic *playMusic = [JWMusicTool playingMusic];
+    // 2. 停止当前播放的歌曲
+    [JWAudioTool stopMusicWithMusicName:playMusic.filename];
+    // 3. 播放选择的歌曲
+    JWMusic *changeMusic = nil;
+    if (isNextMusic) {
+        // 播放下一首歌曲
+        changeMusic = [JWMusicTool nextMusic];
+    }
+    else {
+        // 播放上一首歌曲
+        changeMusic = [JWMusicTool previousMusic];
+    }
+    [JWAudioTool playMusicWithMusicName:changeMusic.filename];
+    // 4. 将歌曲设置为当前播放歌曲
+    [JWMusicTool setPlayingMusic:changeMusic];
+    // 5. 播放歌曲
+    [self startPlayingMusic];
+}
+
+- (IBAction)playOrPauseMusic:(UIButton *)sender {
+    
+    sender.selected = !sender.isSelected;
+    // 根据歌曲是否播放决定播放还是暂停
+    if (self.player.isPlaying) {
+        [self.player pause];
+        // 暂定动画
+        [self.iconView.layer pauseLayer];
+        // 停止定时器
+        [self stopProgressTimer];
+    }
+    else {
+        [self.player play];
+        // 继续动画
+        [self.iconView.layer resumeLayer];
+        // 启动定时器
+        [self startProgressTimer];
+    }
+    
 }
 
 

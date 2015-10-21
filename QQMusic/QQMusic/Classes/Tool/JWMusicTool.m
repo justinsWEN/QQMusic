@@ -36,4 +36,55 @@ static JWMusic *playingMusic_;
     
     playingMusic_ = playingMusic;
 }
+
++ (JWMusic *)previousMusic {
+    
+    // 1. 获取当前歌曲的下标值
+    NSInteger currentIndex = [musics_ indexOfObject:playingMusic_];
+    
+    // 2. 获取上一首的下标值
+    NSInteger previousIndex = currentIndex - 1;
+    
+    if (previousIndex < 0) {
+     
+        // 设置为最后一首
+        previousIndex = musics_.count - 1;
+    }
+    
+    // 3. 返回上一首歌曲
+    return [musics_ objectAtIndex:previousIndex];
+}
+
++ (JWMusic *)nextMusic {
+    
+    // 1. 获取当前歌曲的下标值
+    NSInteger currentIndex = [musics_ indexOfObject:playingMusic_];
+    
+    // 2. 获取下一首的下标值
+    NSInteger nextIndex = currentIndex + 1;
+    
+    if (nextIndex > musics_.count - 1) {
+        
+        // 设置为最后一首
+        nextIndex = 0;
+    }
+    
+    // 3. 返回上一首歌曲
+    return [musics_ objectAtIndex:nextIndex];
+}
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+

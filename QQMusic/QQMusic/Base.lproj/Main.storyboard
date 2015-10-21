@@ -68,13 +68,18 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lFW-NG-kRR" userLabel="底部View">
                                 <rect key="frame" x="0.0" y="450" width="600" height="150"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zav-LJ-Oj4" userLabel="播放音乐">
+                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zav-LJ-Oj4" userLabel="播放音乐">
                                         <rect key="frame" x="268" y="56" width="64" height="64"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="64" id="7BO-HK-thw"/>
                                             <constraint firstAttribute="height" constant="64" id="lpD-5O-Zlh"/>
                                         </constraints>
                                         <state key="normal" image="player_btn_play_normal"/>
+                                        <state key="selected" image="player_btn_pause_normal"/>
+                                        <state key="highlighted" image="player_btn_play_highlight"/>
+                                        <connections>
+                                            <action selector="playOrPauseMusic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hlC-1p-wVd"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HTH-mr-JA7" userLabel="上一首">
                                         <rect key="frame" x="174" y="56" width="64" height="64"/>
@@ -83,6 +88,9 @@
                                             <constraint firstAttribute="width" constant="64" id="uFf-6j-ZSs"/>
                                         </constraints>
                                         <state key="normal" image="player_btn_pre_normal"/>
+                                        <connections>
+                                            <action selector="previousMusic" destination="BYZ-38-t0r" eventType="touchUpInside" id="pvK-w7-aXN"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vt7-3c-ho4" userLabel="下一首">
                                         <rect key="frame" x="362" y="56" width="64" height="64"/>
@@ -91,6 +99,9 @@
                                             <constraint firstAttribute="height" constant="64" id="yMt-XA-tmM"/>
                                         </constraints>
                                         <state key="normal" image="player_btn_next_normal"/>
+                                        <connections>
+                                            <action selector="nextMusic" destination="BYZ-38-t0r" eventType="touchUpInside" id="M0f-5w-2Ti"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02:30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CkM-v7-BhB" userLabel="当前播放时间">
                                         <rect key="frame" x="0.0" y="12" width="50" height="17"/>
@@ -201,6 +212,8 @@
         <image name="main_tab_more" width="45" height="45"/>
         <image name="miniplayer_btn_playlist_close_b" width="40" height="40"/>
         <image name="player_btn_next_normal" width="64" height="64"/>
+        <image name="player_btn_pause_normal" width="64" height="64"/>
+        <image name="player_btn_play_highlight" width="64" height="64"/>
         <image name="player_btn_play_normal" width="64" height="64"/>
         <image name="player_btn_pre_normal" width="64" height="64"/>
     </resources>

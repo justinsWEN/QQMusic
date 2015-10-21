@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B94E80441BD7C9AB004CE4AC /* CALayer+JWExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B94E80431BD7C9AB004CE4AC /* CALayer+JWExtension.m */; settings = {ASSET_TAGS = (); }; };
 		B9E3E5B41BD7268B0053A054 /* DRNRealTimeBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E3E5851BD7268B0053A054 /* DRNRealTimeBlurView.m */; settings = {ASSET_TAGS = (); }; };
 		B9E3E5B51BD7268B0053A054 /* UIImage+BoxBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E3E5871BD7268B0053A054 /* UIImage+BoxBlur.m */; settings = {ASSET_TAGS = (); }; };
 		B9E3E5B61BD7268B0053A054 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E3E58A1BD7268B0053A054 /* MASCompositeConstraint.m */; settings = {ASSET_TAGS = (); }; };
@@ -99,6 +100,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B94E80421BD7C9AB004CE4AC /* CALayer+JWExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+JWExtension.h"; sourceTree = "<group>"; };
+		B94E80431BD7C9AB004CE4AC /* CALayer+JWExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+JWExtension.m"; sourceTree = "<group>"; };
 		B9E3E5841BD7268B0053A054 /* DRNRealTimeBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRNRealTimeBlurView.h; sourceTree = "<group>"; };
 		B9E3E5851BD7268B0053A054 /* DRNRealTimeBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRNRealTimeBlurView.m; sourceTree = "<group>"; };
 		B9E3E5861BD7268B0053A054 /* UIImage+BoxBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BoxBlur.h"; sourceTree = "<group>"; };
@@ -318,6 +321,8 @@
 			children = (
 				B9E3E5D21BD740B90053A054 /* NSString+JWExtension.h */,
 				B9E3E5D31BD740B90053A054 /* NSString+JWExtension.m */,
+				B94E80421BD7C9AB004CE4AC /* CALayer+JWExtension.h */,
+				B94E80431BD7C9AB004CE4AC /* CALayer+JWExtension.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -697,6 +702,7 @@
 				B9E3E5C01BD7268B0053A054 /* MJExtensionConst.m in Sources */,
 				B9E3E5C51BD7268B0053A054 /* NSObject+MJKeyValue.m in Sources */,
 				B9E3E5BA1BD7268B0053A054 /* MASViewAttribute.m in Sources */,
+				B94E80441BD7C9AB004CE4AC /* CALayer+JWExtension.m in Sources */,
 				B9E3E5B81BD7268B0053A054 /* MASConstraintMaker.m in Sources */,
 				B9E3E5C61BD7268B0053A054 /* NSObject+MJProperty.m in Sources */,
 				B9E3E5BC1BD7268B0053A054 /* NSArray+MASAdditions.m in Sources */,

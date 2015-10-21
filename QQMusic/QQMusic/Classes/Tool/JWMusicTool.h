@@ -32,5 +32,18 @@
  */
 + (void)setPlayingMusic:(JWMusic *)playingMusic;
 
+/**
+ *  返回上一首歌曲
+ *
+ *  @param 上一首歌曲
+ */
++ (JWMusic *)previousMusic;
+
+/**
+ *  返回下一首歌曲
+ *
+ *  @param 下一首歌曲
+ */
++ (JWMusic *)nextMusic;
 
 @end
