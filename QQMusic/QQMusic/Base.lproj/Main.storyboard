@@ -92,10 +92,6 @@
                                         </constraints>
                                         <state key="normal" image="player_btn_next_normal"/>
                                     </button>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ESL-kx-TZv" userLabel="进度条">
-                                        <rect key="frame" x="48" y="6" width="504" height="31"/>
-                                        <color key="minimumTrackTintColor" red="0.1931223447546403" green="0.55746555328369141" blue="0.30221783870162233" alpha="1" colorSpace="calibratedRGB"/>
-                                    </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02:30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CkM-v7-BhB" userLabel="当前播放时间">
                                         <rect key="frame" x="0.0" y="12" width="50" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -108,6 +104,16 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ESL-kx-TZv" userLabel="进度条">
+                                        <rect key="frame" x="48" y="6" width="504" height="31"/>
+                                        <color key="minimumTrackTintColor" red="0.1931223447546403" green="0.55746555328369141" blue="0.30221783870162233" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="sliderTouchDown" destination="BYZ-38-t0r" eventType="touchDown" id="ATc-4C-7Cl"/>
+                                            <action selector="sliderTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="q3T-R5-lJs"/>
+                                            <action selector="sliderValueChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="Idu-zQ-nGr"/>
+                                            <outletCollection property="gestureRecognizers" destination="EkF-bV-22s" appends="YES" id="t8k-35-cUc"/>
+                                        </connections>
+                                    </slider>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -165,19 +171,27 @@
                             <constraint firstItem="qEC-v3-mqn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YEE-wp-uUN"/>
                             <constraint firstItem="wfs-EU-Rnj" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ddQ-sD-VAO"/>
                             <constraint firstItem="lFW-NG-kRR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ebs-Mz-QZw"/>
-                            <constraint firstItem="lFW-NG-kRR" firstAttribute="top" secondItem="qEC-v3-mqn" secondAttribute="bottom" constant="30" id="h8M-cP-4dH"/>
                             <constraint firstItem="lFW-NG-kRR" firstAttribute="top" secondItem="a07-as-geP" secondAttribute="bottom" constant="30" id="lq8-UJ-5Y4"/>
                             <constraint firstAttribute="bottom" secondItem="lFW-NG-kRR" secondAttribute="bottom" id="qoa-1i-P9z"/>
                             <constraint firstAttribute="bottom" secondItem="dWp-KV-9X9" secondAttribute="bottom" id="zyP-jD-VAE"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="h8M-cP-4dH"/>
-                            </mask>
-                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="albumView" destination="dWp-KV-9X9" id="8UX-KG-dZl"/>
+                        <outlet property="currentTimeLabel" destination="CkM-v7-BhB" id="vy3-ok-QR9"/>
+                        <outlet property="iconView" destination="qEC-v3-mqn" id="dgr-4b-Sok"/>
+                        <outlet property="singerLabel" destination="UBf-gP-bSe" id="2Ls-yj-a1u"/>
+                        <outlet property="slider" destination="ESL-kx-TZv" id="n6Z-fB-WhL"/>
+                        <outlet property="songLabel" destination="JTb-rR-fH6" id="Jdq-VH-5O7"/>
+                        <outlet property="totalTimeLabel" destination="hAM-yy-kd2" id="XSR-Fs-g4c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="EkF-bV-22s">
+                    <connections>
+                        <action selector="sliderClick:" destination="BYZ-38-t0r" id="g89-Qg-HgH"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="135" y="310"/>
         </scene>
