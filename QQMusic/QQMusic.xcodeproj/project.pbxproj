@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B94E80441BD7C9AB004CE4AC /* CALayer+JWExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B94E80431BD7C9AB004CE4AC /* CALayer+JWExtension.m */; settings = {ASSET_TAGS = (); }; };
+		B94E80471BD7D20B004CE4AC /* JWLrcScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B94E80461BD7D20B004CE4AC /* JWLrcScrollView.m */; settings = {ASSET_TAGS = (); }; };
 		B9E3E5B41BD7268B0053A054 /* DRNRealTimeBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E3E5851BD7268B0053A054 /* DRNRealTimeBlurView.m */; settings = {ASSET_TAGS = (); }; };
 		B9E3E5B51BD7268B0053A054 /* UIImage+BoxBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E3E5871BD7268B0053A054 /* UIImage+BoxBlur.m */; settings = {ASSET_TAGS = (); }; };
 		B9E3E5B61BD7268B0053A054 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E3E58A1BD7268B0053A054 /* MASCompositeConstraint.m */; settings = {ASSET_TAGS = (); }; };
@@ -102,6 +103,8 @@
 /* Begin PBXFileReference section */
 		B94E80421BD7C9AB004CE4AC /* CALayer+JWExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+JWExtension.h"; sourceTree = "<group>"; };
 		B94E80431BD7C9AB004CE4AC /* CALayer+JWExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+JWExtension.m"; sourceTree = "<group>"; };
+		B94E80451BD7D20B004CE4AC /* JWLrcScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWLrcScrollView.h; sourceTree = "<group>"; };
+		B94E80461BD7D20B004CE4AC /* JWLrcScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWLrcScrollView.m; sourceTree = "<group>"; };
 		B9E3E5841BD7268B0053A054 /* DRNRealTimeBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRNRealTimeBlurView.h; sourceTree = "<group>"; };
 		B9E3E5851BD7268B0053A054 /* DRNRealTimeBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRNRealTimeBlurView.m; sourceTree = "<group>"; };
 		B9E3E5861BD7268B0053A054 /* UIImage+BoxBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BoxBlur.h"; sourceTree = "<group>"; };
@@ -441,6 +444,8 @@
 		B9E528FF1BD6A58D0005706D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B94E80451BD7D20B004CE4AC /* JWLrcScrollView.h */,
+				B94E80461BD7D20B004CE4AC /* JWLrcScrollView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -707,6 +712,7 @@
 				B9E3E5C61BD7268B0053A054 /* NSObject+MJProperty.m in Sources */,
 				B9E3E5BC1BD7268B0053A054 /* NSArray+MASAdditions.m in Sources */,
 				B9E3E5BF1BD7268B0053A054 /* ViewController+MASAdditions.m in Sources */,
+				B94E80471BD7D20B004CE4AC /* JWLrcScrollView.m in Sources */,
 				B9E3E5C21BD7268B0053A054 /* MJProperty.m in Sources */,
 				B9E3E5D41BD740B90053A054 /* NSString+JWExtension.m in Sources */,
 				B9E3E5C31BD7268B0053A054 /* MJType.m in Sources */,

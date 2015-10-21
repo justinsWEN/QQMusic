@@ -14,33 +14,28 @@
 #import "JWMusic.h"
 #import "NSString+JWExtension.h"
 #import "CALayer+JWExtension.h"
+#import "JWLrcScrollView.h"
 
 #define JWColor(r,g,b) ([UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0])
 
-@interface JWPlayingViewController ()
+@interface JWPlayingViewController () <UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *albumView; // 背景图片
-
 @property (weak, nonatomic) IBOutlet UIImageView *iconView; // 歌手封面
-
 @property (weak, nonatomic) IBOutlet UILabel *songLabel; // 歌曲
-
 @property (weak, nonatomic) IBOutlet UILabel *singerLabel; // 歌手
-
 @property (weak, nonatomic) IBOutlet UILabel *currentTimeLabel; // 当前时间
-
 @property (weak, nonatomic) IBOutlet UILabel *totalTimeLabel; // 歌曲总时间
-
 @property (weak, nonatomic) IBOutlet UISlider *slider; // 进度条
+@property (weak, nonatomic) IBOutlet UILabel *lrcLabel; // 歌词
 
 /** 进度定时器 */
 @property (nonatomic, strong) NSTimer *timer;
-
 /** 播放器 */
 @property (nonatomic, weak) AVAudioPlayer *player;
-
 /** 进度定时器 */
 @property (nonatomic, strong) NSTimer *progressTimer;
+@property (weak, nonatomic) IBOutlet JWLrcScrollView *lrcScrollView;
 
 @end
 
@@ -61,6 +56,9 @@
     
     // 4.添加定时器
     [self startProgressTimer];
+    
+    // 5. 设置ScrollView
+    self.lrcScrollView.contentSize = CGSizeMake(self.view.bounds.size.width * 2, 0);
 }
 
 // 添加毛玻璃效果
@@ -262,6 +260,18 @@
         // 启动定时器
         [self startProgressTimer];
     }
+    
+}
+
+#pragma mark - <UIScrollViewDelegate>lrcView代理
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    // 计算lrcView的偏移量占lrcView的宽度比例
+    CGFloat offsetRatio = scrollView.contentOffset.x / scrollView.bounds.size.width;
+    // 设置歌手封面的透明度
+    self.iconView.alpha = 1 - offsetRatio;
+    // 设置歌词label的透明度
+    self.lrcLabel.alpha = 1 - offsetRatio;
     
 }
 

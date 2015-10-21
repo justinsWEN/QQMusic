@@ -158,7 +158,7 @@
                                 </variation>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="月半小乐曲" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a07-as-geP">
-                                <rect key="frame" x="257.5" y="400" width="85" height="20"/>
+                                <rect key="frame" x="257" y="400" width="85" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="MgP-mg-uyr"/>
                                 </constraints>
@@ -166,6 +166,12 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4RR-xO-MeX" userLabel="歌词ScrollView" customClass="JWLrcScrollView">
+                                <rect key="frame" x="0.0" y="100" width="600" height="350"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="lXn-dl-duM"/>
+                                </connections>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -173,14 +179,18 @@
                             <constraint firstItem="qEC-v3-mqn" firstAttribute="width" secondItem="qEC-v3-mqn" secondAttribute="height" multiplier="1:1" id="7l6-zB-c4k"/>
                             <constraint firstAttribute="trailing" secondItem="dWp-KV-9X9" secondAttribute="trailing" id="Ayg-Fi-2Cy"/>
                             <constraint firstItem="qEC-v3-mqn" firstAttribute="top" secondItem="wfs-EU-Rnj" secondAttribute="bottom" constant="20" id="BGY-lX-sTS"/>
+                            <constraint firstItem="4RR-xO-MeX" firstAttribute="top" secondItem="wfs-EU-Rnj" secondAttribute="bottom" id="IRS-vc-Min"/>
                             <constraint firstAttribute="trailing" secondItem="lFW-NG-kRR" secondAttribute="trailing" id="ISK-9W-p76"/>
                             <constraint firstItem="a07-as-geP" firstAttribute="top" secondItem="qEC-v3-mqn" secondAttribute="bottom" constant="30" id="No3-Uh-c4p"/>
                             <constraint firstItem="a07-as-geP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Nzj-1i-AIy"/>
                             <constraint firstItem="dWp-KV-9X9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="OK3-c5-ci0"/>
                             <constraint firstItem="wfs-EU-Rnj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="PkY-yi-wma"/>
+                            <constraint firstItem="lFW-NG-kRR" firstAttribute="top" secondItem="4RR-xO-MeX" secondAttribute="bottom" id="ReL-Sw-lCt"/>
                             <constraint firstAttribute="trailing" secondItem="wfs-EU-Rnj" secondAttribute="trailing" id="RfS-6J-gcS"/>
                             <constraint firstItem="qEC-v3-mqn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YEE-wp-uUN"/>
+                            <constraint firstItem="4RR-xO-MeX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ZTn-LO-SCI"/>
                             <constraint firstItem="wfs-EU-Rnj" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ddQ-sD-VAO"/>
+                            <constraint firstAttribute="trailing" secondItem="4RR-xO-MeX" secondAttribute="trailing" id="ePw-RE-QUu"/>
                             <constraint firstItem="lFW-NG-kRR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ebs-Mz-QZw"/>
                             <constraint firstItem="lFW-NG-kRR" firstAttribute="top" secondItem="a07-as-geP" secondAttribute="bottom" constant="30" id="lq8-UJ-5Y4"/>
                             <constraint firstAttribute="bottom" secondItem="lFW-NG-kRR" secondAttribute="bottom" id="qoa-1i-P9z"/>
@@ -191,6 +201,8 @@
                         <outlet property="albumView" destination="dWp-KV-9X9" id="8UX-KG-dZl"/>
                         <outlet property="currentTimeLabel" destination="CkM-v7-BhB" id="vy3-ok-QR9"/>
                         <outlet property="iconView" destination="qEC-v3-mqn" id="dgr-4b-Sok"/>
+                        <outlet property="lrcLabel" destination="a07-as-geP" id="Mhg-7I-3UV"/>
+                        <outlet property="lrcScrollView" destination="4RR-xO-MeX" id="Ua0-vK-4Jp"/>
                         <outlet property="singerLabel" destination="UBf-gP-bSe" id="2Ls-yj-a1u"/>
                         <outlet property="slider" destination="ESL-kx-TZv" id="n6Z-fB-WhL"/>
                         <outlet property="songLabel" destination="JTb-rR-fH6" id="Jdq-VH-5O7"/>
