@@ -11,12 +11,15 @@
 #import "JWLrcCell.h"
 #import "JWLrcTool.h"
 #import "JWLrcLine.h"
+#import "JWLrcLabel.h"
 
 @interface JWLrcScrollView()<UITableViewDataSource>
 
 @property (nonatomic, weak) UITableView *tableView;
 
 @property (nonatomic, strong) NSArray *lrcLines;
+/** 记录当前歌词的位置 */
+@property (nonatomic, assign) NSInteger currentIndex;
 @end
 
 @implementation JWLrcScrollView
@@ -73,10 +76,20 @@
     // 1. 创建cell
     JWLrcCell *cell = [JWLrcCell lrcCellWithTableView:tableView];
     
+    if (self.currentIndex == indexPath.row) {
+        
+        cell.lrcLabel.font = [UIFont systemFontOfSize:18.0];
+        cell.lrcLabel.textColor = [UIColor orangeColor];
+    }
+    else {
+        
+        cell.lrcLabel.font = [UIFont systemFontOfSize:14.0];
+        cell.lrcLabel.textColor = [UIColor whiteColor];
+    }
     // 获取模型数据
     JWLrcLine *lrcLine = self.lrcLines[indexPath.row];
     
-    cell.textLabel.text = lrcLine.text;
+    cell.lrcLabel.text = lrcLine.text;
     
     return cell;
 }
@@ -97,6 +110,34 @@
 - (void)setCurrentTime:(NSTimeInterval)currentTime {
     
     _currentTime = currentTime;
+    
+    // 找出需要显示的歌词
+    NSInteger count = self.lrcLines.count;
+    for (int i = 0; i < count; ++i) {
+        
+        // 1. 拿到i位置的歌词
+        JWLrcLine *currentLrcLine = self.lrcLines[i];
+        // 2. 拿到i+1位置的歌词
+        NSInteger nextIndex = i + 1;
+        if (nextIndex >= count) return;
+        JWLrcLine *nextLrcLine = self.lrcLines[nextIndex];
+        // 3. 当前时间大于i位置歌词的时间并且小于i+1位置的歌词时间
+        if (currentTime >= currentLrcLine.time && currentTime < nextLrcLine.time && self.currentIndex != i) {
+            
+            // 计算i位置的indexPath
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+            NSIndexPath *previousPath = [NSIndexPath indexPathForRow:self.currentIndex inSection:0];
+            // 记录当前歌词的位置
+            self.currentIndex = i;
+            
+            // 刷新i位置的cell
+            [self.tableView reloadRowsAtIndexPaths:@[indexPath, previousPath] withRowAnimation:UITableViewRowAnimationNone];
+            
+            // 让tableView的i位置cell滚动到中间
+            [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        }
+        
+    }
 }
 
 @end

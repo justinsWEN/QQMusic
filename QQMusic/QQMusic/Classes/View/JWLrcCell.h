@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class JWLrcLabel;
 @interface JWLrcCell : UITableViewCell
 
 + (instancetype)lrcCellWithTableView:(UITableView *)tableView;
+/** 显示歌词的label */
+@property (nonatomic, strong) JWLrcLabel *lrcLabel;
 
 @end

@@ -12,6 +12,7 @@
 		B93A7A341BD80501006268F2 /* JWLrcTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B93A7A331BD80501006268F2 /* JWLrcTool.m */; settings = {ASSET_TAGS = (); }; };
 		B94E80441BD7C9AB004CE4AC /* CALayer+JWExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B94E80431BD7C9AB004CE4AC /* CALayer+JWExtension.m */; settings = {ASSET_TAGS = (); }; };
 		B94E80471BD7D20B004CE4AC /* JWLrcScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B94E80461BD7D20B004CE4AC /* JWLrcScrollView.m */; settings = {ASSET_TAGS = (); }; };
+		B95BCFA81BD8924E006D6DC3 /* JWLrcLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B95BCFA71BD8924E006D6DC3 /* JWLrcLabel.m */; settings = {ASSET_TAGS = (); }; };
 		B9E3E5B41BD7268B0053A054 /* DRNRealTimeBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E3E5851BD7268B0053A054 /* DRNRealTimeBlurView.m */; settings = {ASSET_TAGS = (); }; };
 		B9E3E5B51BD7268B0053A054 /* UIImage+BoxBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E3E5871BD7268B0053A054 /* UIImage+BoxBlur.m */; settings = {ASSET_TAGS = (); }; };
 		B9E3E5B61BD7268B0053A054 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E3E58A1BD7268B0053A054 /* MASCompositeConstraint.m */; settings = {ASSET_TAGS = (); }; };
@@ -114,6 +115,8 @@
 		B94E80431BD7C9AB004CE4AC /* CALayer+JWExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+JWExtension.m"; sourceTree = "<group>"; };
 		B94E80451BD7D20B004CE4AC /* JWLrcScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWLrcScrollView.h; sourceTree = "<group>"; };
 		B94E80461BD7D20B004CE4AC /* JWLrcScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWLrcScrollView.m; sourceTree = "<group>"; };
+		B95BCFA61BD8924E006D6DC3 /* JWLrcLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWLrcLabel.h; sourceTree = "<group>"; };
+		B95BCFA71BD8924E006D6DC3 /* JWLrcLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWLrcLabel.m; sourceTree = "<group>"; };
 		B9E3E5841BD7268B0053A054 /* DRNRealTimeBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRNRealTimeBlurView.h; sourceTree = "<group>"; };
 		B9E3E5851BD7268B0053A054 /* DRNRealTimeBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRNRealTimeBlurView.m; sourceTree = "<group>"; };
 		B9E3E5861BD7268B0053A054 /* UIImage+BoxBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BoxBlur.h"; sourceTree = "<group>"; };
@@ -461,6 +464,8 @@
 				B94E80461BD7D20B004CE4AC /* JWLrcScrollView.m */,
 				B93A7A2C1BD7FC7F006268F2 /* JWLrcCell.h */,
 				B93A7A2D1BD7FC7F006268F2 /* JWLrcCell.m */,
+				B95BCFA61BD8924E006D6DC3 /* JWLrcLabel.h */,
+				B95BCFA71BD8924E006D6DC3 /* JWLrcLabel.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -739,6 +744,7 @@
 				B9E3E5C71BD7268B0053A054 /* NSString+MJExtension.m in Sources */,
 				B9E3E5B91BD7268B0053A054 /* MASLayoutConstraint.m in Sources */,
 				B9E3E5B41BD7268B0053A054 /* DRNRealTimeBlurView.m in Sources */,
+				B95BCFA81BD8924E006D6DC3 /* JWLrcLabel.m in Sources */,
 				B9E3E5C11BD7268B0053A054 /* MJFoundation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
