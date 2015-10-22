@@ -17,7 +17,8 @@
         // 截取时间跟歌词分开
         NSArray *lrcArray = [lrcString componentsSeparatedByString:@"]"];
         self.text = lrcArray[1]; // 歌词
-        self.time = [self timeWithString:[lrcArray[0] substringFromIndex:1]];
+        // [2:20.80 -> 2:20.80
+        self.time = [self timeWithString:[lrcArray[0] substringFromIndex:1]]; // 时间
     }
     return self;
 }

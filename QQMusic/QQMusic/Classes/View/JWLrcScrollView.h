@@ -13,4 +13,7 @@
 /** 歌词文件名 */
 @property (nonatomic, copy) NSString *lrcName;
 
+/** 当前歌曲播放的时间 */
+@property (nonatomic, assign) NSTimeInterval currentTime;
+
 @end

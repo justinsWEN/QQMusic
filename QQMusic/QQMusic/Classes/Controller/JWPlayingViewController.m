@@ -35,6 +35,9 @@
 @property (nonatomic, weak) AVAudioPlayer *player;
 /** 进度定时器 */
 @property (nonatomic, strong) NSTimer *progressTimer;
+/** 歌词定时器 */
+@property (nonatomic, strong) CADisplayLink *lrcTimer;
+
 @property (weak, nonatomic) IBOutlet JWLrcScrollView *lrcScrollView;
 
 @end
@@ -54,11 +57,10 @@
     // 3、开始播放音乐
     [self startPlayingMusic];
     
-    // 4.添加定时器
-    [self startProgressTimer];
-    
-    // 5. 设置ScrollView
+    // 4. 设置ScrollView
     self.lrcScrollView.contentSize = CGSizeMake(self.view.bounds.size.width * 2, 0);
+    
+    
 }
 
 // 添加毛玻璃效果
@@ -118,8 +120,15 @@
     // 4.设置iconView歌手图片旋转效果
     [self addIconViewAnimation];
     
-    // 5. 给lrcScrollView的lrcName设置当前播放歌曲的歌名
+    // 5.添加定时器
+    [self stopProgressTimer]; // 移除之前的定时器
+    [self startProgressTimer];
+    
+    // 6. 给lrcScrollView的lrcName设置当前播放歌曲的歌名
     self.lrcScrollView.lrcName = playMusic.lrcname;
+    
+    // 7. 添加歌词定时器
+    [self startLrcTimer];
 }
 
 #pragma mark - 核心动画
@@ -138,7 +147,7 @@
     [self.iconView.layer addAnimation:rotationAnima forKey:nil];
 }
 
-#pragma mark - 定时器的操作
+#pragma mark - 进度条定时器的操作
 - (void)startProgressTimer {
     
     // 一开始就更新滑块的位置和当前时间
@@ -160,6 +169,24 @@
     
     [self.progressTimer invalidate];
     self.progressTimer = nil;
+}
+
+#pragma mark - 歌词定时器的操作
+- (void)startLrcTimer {
+    
+    self.lrcTimer = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateLrcInfo)];
+    [self.lrcTimer addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+}
+
+- (void)stopLrcTimer {
+    
+    [self.lrcTimer invalidate];
+    self.lrcTimer = nil;
+}
+
+- (void)updateLrcInfo {
+    
+    self.lrcScrollView.currentTime = self.player.currentTime;
 }
 
 #pragma mark - 对进度条UISlider事件的处理

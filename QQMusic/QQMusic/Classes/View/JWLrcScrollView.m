@@ -93,6 +93,12 @@
     [self.tableView reloadData];
 }
 
+#pragma mark - 重写setCurrentTime方法
+- (void)setCurrentTime:(NSTimeInterval)currentTime {
+    
+    _currentTime = currentTime;
+}
+
 @end
 
 
