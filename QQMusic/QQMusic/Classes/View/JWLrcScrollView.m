@@ -79,12 +79,11 @@
     if (self.currentIndex == indexPath.row) {
         
         cell.lrcLabel.font = [UIFont systemFontOfSize:18.0];
-        cell.lrcLabel.textColor = [UIColor orangeColor];
     }
     else {
         
         cell.lrcLabel.font = [UIFont systemFontOfSize:14.0];
-        cell.lrcLabel.textColor = [UIColor whiteColor];
+        cell.lrcLabel.progress = 0.0;
     }
     // 获取模型数据
     JWLrcLine *lrcLine = self.lrcLines[indexPath.row];
@@ -104,6 +103,9 @@
     
     // 刷新列表
     [self.tableView reloadData];
+    
+    // 设置tableView的偏移量，将歌词在中间显示
+    [self.tableView setContentOffset:CGPointMake(0, - self.bounds.size.height * 0.5) animated:NO];
 }
 
 #pragma mark - 重写setCurrentTime方法
@@ -115,9 +117,9 @@
     NSInteger count = self.lrcLines.count;
     for (int i = 0; i < count; ++i) {
         
-        // 1. 拿到i位置的歌词
+        // 1. 拿到当前显示i位置的歌词
         JWLrcLine *currentLrcLine = self.lrcLines[i];
-        // 2. 拿到i+1位置的歌词
+        // 2. 拿到下一个位置i+1位置的歌词
         NSInteger nextIndex = i + 1;
         if (nextIndex >= count) return;
         JWLrcLine *nextLrcLine = self.lrcLines[nextIndex];
@@ -126,15 +128,45 @@
             
             // 计算i位置的indexPath
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
-            NSIndexPath *previousPath = [NSIndexPath indexPathForRow:self.currentIndex inSection:0];
+            
+            NSArray *indexPaths = [NSArray array];
+            if (self.currentIndex >= count) {
+                
+                indexPaths = @[indexPath];
+            }
+            else {
+                
+                NSIndexPath *previousPath = [NSIndexPath indexPathForRow:self.currentIndex inSection:0];
+                indexPaths = @[indexPath, previousPath];
+            }
+
             // 记录当前歌词的位置
             self.currentIndex = i;
             
             // 刷新i位置的cell
-            [self.tableView reloadRowsAtIndexPaths:@[indexPath, previousPath] withRowAnimation:UITableViewRowAnimationNone];
+            [self.tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
             
             // 让tableView的i位置cell滚动到中间
             [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            
+            // 设置外面显示的歌词
+            self.lrcLabel.text = currentLrcLine.text;
+        }
+        
+        // 4. 获取当前播放的歌曲歌词的比例
+        if (self.currentIndex == i) {
+            
+            // 4.1 计算当前歌曲歌词播放的比例
+            CGFloat progress = (currentTime - currentLrcLine.time) / (nextLrcLine.time - currentLrcLine.time);
+            // 4.2 歌曲歌词的当前cell
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+            // 4.3 告知当前Label歌词的播放进度
+            JWLrcCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+            // 4.4 改变cell里面的歌词进度
+            cell.lrcLabel.progress = progress;
+            
+            // 4.5 改变外面的歌词进度
+            self.lrcLabel.progress = progress; // 改变歌词的显示颜色
         }
         
     }

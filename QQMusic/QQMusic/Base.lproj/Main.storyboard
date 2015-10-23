@@ -157,12 +157,12 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="月半小乐曲" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a07-as-geP">
-                                <rect key="frame" x="257" y="400" width="85" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="心碎了无痕" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a07-as-geP" userLabel="歌词label" customClass="JWLrcLabel">
+                                <rect key="frame" x="259.5" y="400" width="80" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="MgP-mg-uyr"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -201,8 +201,9 @@
                         <outlet property="albumView" destination="dWp-KV-9X9" id="8UX-KG-dZl"/>
                         <outlet property="currentTimeLabel" destination="CkM-v7-BhB" id="vy3-ok-QR9"/>
                         <outlet property="iconView" destination="qEC-v3-mqn" id="dgr-4b-Sok"/>
-                        <outlet property="lrcLabel" destination="a07-as-geP" id="Mhg-7I-3UV"/>
+                        <outlet property="lrcLabel" destination="a07-as-geP" id="hSv-Kh-jof"/>
                         <outlet property="lrcScrollView" destination="4RR-xO-MeX" id="Ua0-vK-4Jp"/>
+                        <outlet property="playOrPauseBtn" destination="Zav-LJ-Oj4" id="FHY-3t-WRg"/>
                         <outlet property="singerLabel" destination="UBf-gP-bSe" id="2Ls-yj-a1u"/>
                         <outlet property="slider" destination="ESL-kx-TZv" id="n6Z-fB-WhL"/>
                         <outlet property="songLabel" destination="JTb-rR-fH6" id="Jdq-VH-5O7"/>

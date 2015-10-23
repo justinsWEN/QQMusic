@@ -15,6 +15,8 @@
 #import "NSString+JWExtension.h"
 #import "CALayer+JWExtension.h"
 #import "JWLrcScrollView.h"
+#import "JWLrcLabel.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 #define JWColor(r,g,b) ([UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0])
 
@@ -27,7 +29,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *currentTimeLabel; // 当前时间
 @property (weak, nonatomic) IBOutlet UILabel *totalTimeLabel; // 歌曲总时间
 @property (weak, nonatomic) IBOutlet UISlider *slider; // 进度条
-@property (weak, nonatomic) IBOutlet UILabel *lrcLabel; // 歌词
+@property (weak, nonatomic) IBOutlet JWLrcLabel *lrcLabel; // 歌词
+@property (weak, nonatomic) IBOutlet UIButton *playOrPauseBtn;
 
 /** 进度定时器 */
 @property (nonatomic, strong) NSTimer *timer;
@@ -60,7 +63,8 @@
     // 4. 设置ScrollView
     self.lrcScrollView.contentSize = CGSizeMake(self.view.bounds.size.width * 2, 0);
     
-    
+    // 5. 将外面显示歌词的Label对象赋值给lrcView的引用lrcLabel
+    self.lrcScrollView.lrcLabel = self.lrcLabel;
 }
 
 // 添加毛玻璃效果
@@ -109,6 +113,7 @@
     self.albumView.image = [UIImage imageNamed:playMusic.icon];
     self.iconView.image = [UIImage imageNamed:playMusic.icon];
     self.songLabel.text = playMusic.name;
+    self.lrcLabel.text = playMusic.name;
     self.singerLabel.text = playMusic.singer;
     
     // 3.开始播放歌曲
@@ -129,6 +134,81 @@
     
     // 7. 添加歌词定时器
     [self startLrcTimer];
+    
+    // 8. 设置播放歌曲锁屏后显示的内容
+    [self setupLockScreenInfo];
+}
+
+// MPMediaItemPropertyAlbumTitle
+// MPMediaItemPropertyAlbumTrackCount
+// MPMediaItemPropertyAlbumTrackNumber
+// MPMediaItemPropertyArtist
+// MPMediaItemPropertyArtwork
+// MPMediaItemPropertyComposer
+// MPMediaItemPropertyDiscCount
+// MPMediaItemPropertyDiscNumber
+// MPMediaItemPropertyGenre
+// MPMediaItemPropertyPersistentID
+// MPMediaItemPropertyPlaybackDuration
+// MPMediaItemPropertyTitle
+
+#pragma mark - 设置播放歌曲锁屏后显示的内容
+- (void)setupLockScreenInfo {
+    
+    // 1. 拿到当前播放的歌曲
+    JWMusic *playingMusic = [JWMusicTool playingMusic];
+    
+    // 2. 设置锁屏界面的内容
+    // 2.1 获取锁屏界面中心
+    MPNowPlayingInfoCenter *infoCenter = [MPNowPlayingInfoCenter defaultCenter];
+    
+    // 2.2 设置锁屏显示的信息
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setValue:playingMusic.name forKey:MPMediaItemPropertyAlbumTitle]; // 设置歌曲
+    [dict setValue:playingMusic.singer forKey:MPMediaItemPropertyArtist]; // 设置歌手
+    UIImage *image = [UIImage imageNamed:playingMusic.icon];
+    MPMediaItemArtwork *artWork = [[MPMediaItemArtwork alloc] initWithImage:image];
+    [dict setValue:artWork forKey:MPMediaItemPropertyArtwork]; // 设置歌手封面
+    [dict setValue:@(self.player.duration) forKey:MPMediaItemPropertyPlaybackDuration]; // 设置总歌曲总时长
+    
+    infoCenter.nowPlayingInfo = dict;
+    
+    // 2.3 让应用程序可以接受远程事件
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+}
+
+// event.subtype
+/*
+ UIEventSubtypeNone                              = 0,
+ // for UIEventTypeMotion, available in iPhone OS 3.0
+ UIEventSubtypeMotionShake                       = 1,
+ // for UIEventTypeRemoteControl, available in iOS 4.0
+ UIEventSubtypeRemoteControlPlay                 = 100,
+ UIEventSubtypeRemoteControlPause                = 101,
+ UIEventSubtypeRemoteControlStop                 = 102,
+ UIEventSubtypeRemoteControlTogglePlayPause      = 103,
+ UIEventSubtypeRemoteControlNextTrack            = 104,
+ UIEventSubtypeRemoteControlPreviousTrack        = 105,
+ UIEventSubtypeRemoteControlBeginSeekingBackward = 106,
+ UIEventSubtypeRemoteControlEndSeekingBackward   = 107,
+ UIEventSubtypeRemoteControlBeginSeekingForward  = 108,
+ UIEventSubtypeRemoteControlEndSeekingForward    = 109,
+ */
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event {
+    
+    switch (event.subtype) {
+        case UIEventSubtypeRemoteControlPlay:
+            [self playOrPauseMusic:self.playOrPauseBtn];
+            break;
+        case UIEventSubtypeRemoteControlNextTrack:
+            [self nextMusic];
+            break;
+        case UIEventSubtypeRemoteControlPreviousTrack:
+            [self previousMusic];
+            break;
+        default:
+            break;
+    }
 }
 
 #pragma mark - 核心动画

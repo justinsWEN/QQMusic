@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class JWLrcLabel;
 @interface JWLrcScrollView : UIScrollView
 
 /** 歌词文件名 */
@@ -15,5 +16,8 @@
 
 /** 当前歌曲播放的时间 */
 @property (nonatomic, assign) NSTimeInterval currentTime;
+
+/** 外面歌词Label的引用 */
+@property (nonatomic, weak) JWLrcLabel *lrcLabel;
 
 @end

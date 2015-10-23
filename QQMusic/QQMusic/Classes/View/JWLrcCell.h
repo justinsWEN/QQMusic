@@ -13,6 +13,6 @@
 
 + (instancetype)lrcCellWithTableView:(UITableView *)tableView;
 /** 显示歌词的label */
-@property (nonatomic, strong) JWLrcLabel *lrcLabel;
+@property (nonatomic, weak) JWLrcLabel *lrcLabel;
 
 @end

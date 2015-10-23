@@ -10,4 +10,6 @@
 
 @interface JWLrcLabel : UILabel
 
+/** 当前歌词的播放进度 */
+@property (nonatomic, assign) CGFloat progress;
 @end

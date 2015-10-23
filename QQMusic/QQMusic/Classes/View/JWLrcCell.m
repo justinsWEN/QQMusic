@@ -32,7 +32,7 @@
         self.backgroundColor = [UIColor clearColor];
         // 去掉点击cell有背景颜色显示
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        
+        // cell显示歌词
         self.lrcLabel = lrcLabel;
     }
     return self;
